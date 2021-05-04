@@ -1,16 +1,17 @@
 //this class was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 5 : 00
 
+//The purpose of this class is to create the window in which the game will be displayed
+
 import java.awt.Canvas;
 import javax.swing.JFrame;
 import java.awt.Dimension;
 
 public class Window extends Canvas {
 
-    /**
-     *
-     */
+    
     private static final long serialVersionUID = 1L;
 
+    //Constructor for the window class
     public Window(int width, int height, String title, Game game)
     {
         JFrame frame = new JFrame(title);

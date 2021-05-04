@@ -19,12 +19,14 @@ public class Game extends Canvas implements Runnable {
     }
 
 
+    //Constructor method for the Game.
     public Game()
     {
         new Window(WIDTH,HEIGHT,"Cosmic Conquistadors",this);
     }
 
     //This method was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 12 : 00
+    //Method to start the game loop.
     public synchronized void start()
     {
         thread = new Thread(this);
@@ -33,6 +35,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     //This method was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 12 : 36
+    //Method to stop the game loop when the game stops running.
     public synchronized void stop()
     {
         try {
@@ -44,12 +47,14 @@ public class Game extends Canvas implements Runnable {
         }       
     }
 
+    //Method where everything will be updated for each game loop.
     public void tick()
     {
 
     }
 
     //Part of this method was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 16 : 30
+    //Method for drawing everything to the window.
     public void render()
     {
         BufferStrategy bs = this.getBufferStrategy();
@@ -68,6 +73,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     //This method was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 14 : 49
+    // Game loop method
     public void run() {
         this.requestFocus();
         System.out.println("Running");
