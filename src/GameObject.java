@@ -1,8 +1,8 @@
 //Code written by Sean Muller 23575786
 
-import java.awt.Graphics;
-
 //This is the abstract class for all objects that will appear in the game.
+
+import java.awt.Graphics;
 
 public abstract class GameObject
 {

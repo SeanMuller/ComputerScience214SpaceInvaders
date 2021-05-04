@@ -1,5 +1,4 @@
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
@@ -14,6 +13,8 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private boolean running = false;
 
+    private GameStateHandler stateHandler;
+
     public static void main(String[] args) {
         new Game();
     }
@@ -22,7 +23,10 @@ public class Game extends Canvas implements Runnable {
     //Constructor method for the Game.
     public Game()
     {
+        //Create a Window for the Game to use.
         new Window(WIDTH,HEIGHT,"Cosmic Conquistadors",this);
+        //Instantiate the GameStateHandler and set the state to the MainMenu.
+        stateHandler = new GameStateHandler(GameState.MainMenu);
     }
 
     //This method was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 12 : 00
@@ -50,7 +54,7 @@ public class Game extends Canvas implements Runnable {
     //Method where everything will be updated for each game loop.
     public void tick()
     {
-
+        stateHandler.tick();
     }
 
     //Part of this method was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 16 : 30
@@ -65,8 +69,7 @@ public class Game extends Canvas implements Runnable {
         }
 
         Graphics g = bs.getDrawGraphics();
-        g.setColor(Color.GRAY);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        stateHandler.render(g);
 
         g.dispose();
         bs.show();
