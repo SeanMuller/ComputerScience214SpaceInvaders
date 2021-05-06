@@ -23,10 +23,15 @@ public class Game extends Canvas implements Runnable {
     //Constructor method for the Game.
     public Game()
     {
-        //Create a Window for the Game to use.
-        new Window(WIDTH,HEIGHT,"Cosmic Conquistadors",this);
         //Instantiate the GameStateHandler and set the state to the MainMenu.
         stateHandler = new GameStateHandler(GameState.MainMenu);
+
+        //Add the KeyInput key listener
+        this.addKeyListener(new KeyInput(stateHandler));
+
+        //Create a Window for the Game to use.
+        new Window(WIDTH,HEIGHT,"Cosmic Conquistadors",this);
+        
     }
 
     //This method was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 12 : 00
