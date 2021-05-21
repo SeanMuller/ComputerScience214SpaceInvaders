@@ -44,7 +44,7 @@ public class KeyInput extends KeyAdapter {
     }
 
     // Method to deal with all key presses while in the Game GameState
-    void GameKeyPressed(KeyEvent e) {
+    private void GameKeyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
         // Key pressed to pause the game
@@ -64,7 +64,7 @@ public class KeyInput extends KeyAdapter {
     }
 
     // Method to deal with all key releases while in the Game GameState
-    void GameKeyReleased(KeyEvent e) {
+    private void GameKeyReleased(KeyEvent e) {
         int key = e.getKeyCode();
         LinkedList<GameObject> objects = stateHandler.getGameObjectHandler().gameObjects;
         for (int i = 0; i < objects.size(); i++) {
@@ -76,10 +76,10 @@ public class KeyInput extends KeyAdapter {
     }
 
     // Method to deal with all key presses while in the MainMenu GameState
-    void MainMenuKeyPressed(KeyEvent e) {
+    private void MainMenuKeyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         switch (key) {
-            case KeyEvent.VK_ENTER:
+            case KeyEvent.VK_SPACE:
                 stateHandler.setGameState(GameState.Game);
                 break;
         }
@@ -87,7 +87,7 @@ public class KeyInput extends KeyAdapter {
     }
 
     // Method to control the actions of a player when the right key is pressed
-    void playerKeyPress(Player player, int key) {
+    private void playerKeyPress(Player player, int key) {
         if (key == KeyEvent.VK_A) {
             player.setVelX(-player.getPlayerSpeed());
             addKeyToList(key);
@@ -97,10 +97,15 @@ public class KeyInput extends KeyAdapter {
             player.setVelX(player.getPlayerSpeed());
             addKeyToList(key);
         }
+        if (key == KeyEvent.VK_W) {
+            player.createMissile();
+            addKeyToList(key);
+        }
     }
 
     // Method to control the actions of a player when the right key is released
-    void playerKeyRelease(GameObject tempObject, int key) {
+    //This stops the player from getting stuck when the keys are pressed rapidly
+    private void playerKeyRelease(GameObject tempObject, int key) {
         if (tempObject.getId() == ID.Player) {
             if (key == KeyEvent.VK_A) {
                 tempObject.setVelX(0);
@@ -108,6 +113,11 @@ public class KeyInput extends KeyAdapter {
             }
 
             if (key == KeyEvent.VK_D) {
+                tempObject.setVelX(0);
+                removeKeyFromList(key);
+            }
+
+            if (key == KeyEvent.VK_W) {
                 tempObject.setVelX(0);
                 removeKeyFromList(key);
             }

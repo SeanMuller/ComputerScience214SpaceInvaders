@@ -12,7 +12,13 @@ public class GameObjectHandler {
     public void tick() {
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject tempObject = gameObjects.get(i);
-            tempObject.tick();
+            if (tempObject.isDead())
+            {
+                removeObject(tempObject);
+            }else
+            {
+                tempObject.tick();
+            }
         }
     }
 

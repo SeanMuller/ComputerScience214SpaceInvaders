@@ -12,6 +12,7 @@ public abstract class GameObject
     //Variables to store the position and velocity of the object
     protected float x,y;
     protected float velX,velY;
+    protected boolean dead;
 
     //Constructor method for a GameObject object
     public GameObject(float x, float y, ID id)
@@ -19,6 +20,7 @@ public abstract class GameObject
         this.x = x;
         this.y = y;
         this.id = id;
+        this.dead = false;
     }
 
     //Abstract methods that all classes that inherit from GameObject must implement
@@ -30,6 +32,11 @@ public abstract class GameObject
 
 
     //Getter and setter methods for a GameObject
+    public boolean isDead()
+    {
+        return dead;
+    }
+    
     public void setX(float x)
     {
         this.x = x;
