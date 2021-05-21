@@ -19,6 +19,8 @@ public class Player extends GameObject {
     public void tick() {
         x+=velX;
         y+=velY;
+        if (x-playerSize/2<0){x=playerSize/2;}
+        if(x+playerSize>=Game.WIDTH){x=Game.WIDTH-playerSize;}
     }
 
     //Render method to draw the player to the screen
