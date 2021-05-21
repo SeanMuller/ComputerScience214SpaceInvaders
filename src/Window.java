@@ -11,12 +11,10 @@ public class Window extends Canvas {
     
     private static final long serialVersionUID = 1L;
 
-    private JFrame frame;
-
     //Constructor for the window class
     public Window(int width, int height, String title, Game game)
     {
-        frame = new JFrame(title);
+        JFrame frame = new JFrame(title);
         Dimension dimension = new Dimension(width,height);
         frame.setPreferredSize(dimension);
         frame.setMaximumSize(dimension);
@@ -29,16 +27,4 @@ public class Window extends Canvas {
         frame.setVisible(true);
         game.start();
     }  
-
-    //Get the X location of the JFrame
-    public double getXCoord()
-    {
-        return frame.getLocation().getX();
-    }
-
-    //Get the Y location of the JFrame
-    public double getYCoord()
-    {
-        return frame.getLocation().getY();
-    }
 }

@@ -52,10 +52,8 @@ public class MainMenu {
 
         // Put the text on the screen
         drawStringCenteredAtPoint(g, Game.WIDTH / 2, Game.HEIGHT / 2, "Cosmic Conquistadors", title, Color.WHITE);
-        Color tempColor = new Color(startIntensity, startIntensity, startIntensity);
-        drawStringCenteredAtPoint(g, Game.WIDTH / 2, Game.HEIGHT / 2 + 30, "Press space to start", body, tempColor);
-        drawStringCenteredAtPoint(g, Game.WIDTH / 2, Game.HEIGHT -80, "Press s to view the high scores", body, Color.WHITE);
-        drawStringCenteredAtPoint(g, Game.WIDTH / 2, Game.HEIGHT -50, "Press i to view the player controls", body, Color.WHITE);
+        Color temp = new Color(startIntensity, startIntensity, startIntensity);
+        drawStringCenteredAtPoint(g, Game.WIDTH / 2, Game.HEIGHT / 2 + 30, "Press enter to start", body, temp);
     }
 
     // method to draw text that is centered at the specified point

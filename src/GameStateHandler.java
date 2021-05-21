@@ -15,7 +15,7 @@ public class GameStateHandler {
         this.state = state;
         menu = new MainMenu();
         gameHandler = new GameObjectHandler();
-        gameHandler.addObject(new Player(Game.WIDTH / 2, Game.HEIGHT - 80, ID.Player, gameHandler));
+        gameHandler.addObject(new Player(Game.WIDTH / 2, Game.HEIGHT - 100, ID.Player));
     }
 
     // Method to control which part of the game is getting updated every tick.
