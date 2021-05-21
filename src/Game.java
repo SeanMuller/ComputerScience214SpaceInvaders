@@ -1,6 +1,8 @@
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.MouseInfo;
+import java.awt.Point;
 
 public class Game extends Canvas implements Runnable {
     
@@ -9,8 +11,10 @@ public class Game extends Canvas implements Runnable {
 
     //Constants that will store the width and the height of the screen that the game will be played in
     public static final int WIDTH = 500, HEIGHT = WIDTH/3*4;
+    public static double mouseX,mouseY;
 
     private Thread thread;
+    private static Window window;
     private boolean running = false;
 
     private GameStateHandler stateHandler;
@@ -30,7 +34,7 @@ public class Game extends Canvas implements Runnable {
         this.addKeyListener(new KeyInput(stateHandler));
 
         //Create a Window for the Game to use.
-        new Window(WIDTH,HEIGHT,"Cosmic Conquistadors",this);
+        window = new Window(WIDTH,HEIGHT,"Cosmic Conquistadors",this);
         
     }
 
@@ -60,6 +64,15 @@ public class Game extends Canvas implements Runnable {
     public void tick()
     {
         stateHandler.tick();
+        getRelativeMousePos();
+    }
+
+    //Method that will calculate the mouse position relative to the origin of the game window
+    private static void getRelativeMousePos()
+    {
+        Point mouseP = MouseInfo.getPointerInfo().getLocation();
+        mouseX = mouseP.getX() - window.getXCoord();
+        mouseY = mouseP.getY() - window.getYCoord();
     }
 
     //Part of this method was take from the video https://www.youtube.com/watch?v=1gir2R7G9ws&t=339s at time 16 : 30
